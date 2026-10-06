@@ -12,11 +12,11 @@ public class Usuario {
 
     @Getter
     @NonNull
-    private final UUID id;
+    private UUID id;
 
     @Getter
     @NonNull
-    private final Perfil perfil;
+    private Perfil perfil;
 
     @Getter
     @NonNull
@@ -26,6 +26,7 @@ public class Usuario {
     @NonNull
     private String email;
 
+    @Getter
     @NonNull
     private String senha;
 
@@ -42,6 +43,32 @@ public class Usuario {
         this.setSenha(senha);
     }
 
+    private Usuario(
+            @NonNull UUID id,
+            @NonNull Perfil perfil,
+            @NonNull String nome,
+            @NonNull String email,
+            @NonNull String senha
+    ) {
+        this.id = id;
+        this.perfil = perfil;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario() {}
+
+    public Usuario restaurar(
+            @NonNull UUID id,
+            @NonNull Perfil perfil,
+            @NonNull String nome,
+            @NonNull String email,
+            @NonNull String senha
+    ) {
+        return new Usuario(id, perfil, nome, email, senha);
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -54,7 +81,7 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public boolean match(String senha, PasswordEncoder passwordEncoder){
+    public boolean match(String senha, PasswordEncoder passwordEncoder) {
         return passwordEncoder.matches(senha, this.senha);
     }
 }

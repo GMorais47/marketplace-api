@@ -12,29 +12,29 @@ import java.util.UUID;
 public class ProdutoEntity {
 
     @Id
-    UUID id;
+    public UUID id;
 
     @ManyToOne
             @JoinColumn(name = "vendedor_id", nullable = false)
-    VendedorEntity vendedor;
+    public VendedorEntity vendedor;
 
     @Column(nullable = false, length = 150)
-    String nome;
+    public String nome;
 
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
-    CategoriaEntity categoria;
+    public CategoriaEntity categoria;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    String descricao;
+    public String descricao;
 
     @Column(columnDefinition = "TEXT")
-    String foto;
+    public String foto;
 
     @Column(nullable = false)
-    BigDecimal preco;
+    public BigDecimal preco;
 
     @Column(nullable = false)
-    Float avaliacao;
+    public Float avaliacao;
 
 }

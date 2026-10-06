@@ -2,19 +2,21 @@ package com.academiadodesenvolvedor.marketplace.dominio.produto;
 
 import jakarta.annotation.Nullable;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Getter
+@NoArgsConstructor
 public class Produto {
 
     @NonNull
-    private final UUID id;
+    private UUID id;
 
     @NonNull
-    private final UUID vendedorID;
+    private UUID vendedorID;
 
     @NonNull
     private String nome;
@@ -50,6 +52,21 @@ public class Produto {
         this.setFoto(foto);
         this.setPreco(preco);
         this.avaliacao = new Float(0);
+    }
+
+    private Produto(@NonNull UUID id, @NonNull UUID vendedorID, @NonNull String nome, @NonNull UUID categoriaID, @NonNull String descricao, @Nullable String foto, @NonNull BigDecimal preco, @NonNull Float avaliacao) {
+        this.id = id;
+        this.vendedorID = vendedorID;
+        this.nome = nome;
+        this.categoriaID = categoriaID;
+        this.descricao = descricao;
+        this.foto = foto;
+        this.preco = preco;
+        this.avaliacao = avaliacao;
+    }
+
+    public Produto restaurar(@NonNull UUID id, @NonNull UUID vendedorID, @NonNull String nome, @NonNull UUID categoriaID, @NonNull String descricao, @Nullable String foto, @NonNull BigDecimal preco, @NonNull Float avaliacao){
+        return new Produto(id, vendedorID, nome,categoriaID,descricao,foto,preco, avaliacao);
     }
 
     public void setNome(@NonNull String nome) {
