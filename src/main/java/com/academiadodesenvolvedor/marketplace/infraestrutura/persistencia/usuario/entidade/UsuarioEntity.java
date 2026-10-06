@@ -1,4 +1,4 @@
-package com.academiadodesenvolvedor.marketplace.modelo.usuario;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade;
 
 import com.academiadodesenvolvedor.marketplace.dominio.usuario.enums.Perfil;
 import jakarta.persistence.*;

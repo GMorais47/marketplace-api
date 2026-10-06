@@ -1,8 +1,8 @@
-package com.academiadodesenvolvedor.marketplace.modelo.pedido;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.pedido.entidade;
 
-import com.academiadodesenvolvedor.marketplace.modelo.shared.EnderecoEntity;
-import com.academiadodesenvolvedor.marketplace.modelo.usuario.ClienteEntity;
-import com.academiadodesenvolvedor.marketplace.modelo.usuario.VendedorEntity;
+import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.shared.EnderecoEntity;
+import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.ClienteEntity;
+import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.VendedorEntity;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 

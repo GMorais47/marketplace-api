@@ -1,6 +1,6 @@
-package com.academiadodesenvolvedor.marketplace.modelo.pedido;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.pedido.entidade;
 
-import com.academiadodesenvolvedor.marketplace.modelo.produto.ProdutoEntity;
+import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.produto.ProdutoEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;

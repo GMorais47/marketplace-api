@@ -1,13 +1,10 @@
-package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.categoria;
 
 import com.academiadodesenvolvedor.marketplace.dominio.categoria.Categoria;
 import com.academiadodesenvolvedor.marketplace.dominio.categoria.repositorios.CategoriaRepository;
-import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.jpa.CategoriaEntityRepository;
-import com.academiadodesenvolvedor.marketplace.modelo.categoria.CategoriaEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

@@ -1,9 +1,7 @@
-package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.produto;
 
 import com.academiadodesenvolvedor.marketplace.dominio.produto.Produto;
 import com.academiadodesenvolvedor.marketplace.dominio.produto.repositorios.ProdutoRepository;
-import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.jpa.ProdutoEntityRepository;
-import com.academiadodesenvolvedor.marketplace.modelo.produto.ProdutoEntity;
 import lombok.AllArgsConstructor;
 
 import java.util.List;

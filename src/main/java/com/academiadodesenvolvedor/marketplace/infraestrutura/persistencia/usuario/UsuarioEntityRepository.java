@@ -1,6 +1,6 @@
-package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.jpa;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario;
 
-import com.academiadodesenvolvedor.marketplace.modelo.usuario.UsuarioEntity;
+import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.UsuarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

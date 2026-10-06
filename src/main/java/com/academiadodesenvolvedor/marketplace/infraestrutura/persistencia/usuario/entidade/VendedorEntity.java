@@ -1,6 +1,6 @@
-package com.academiadodesenvolvedor.marketplace.modelo.usuario;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade;
 
-import com.academiadodesenvolvedor.marketplace.modelo.shared.EnderecoEntity;
+import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.shared.EnderecoEntity;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

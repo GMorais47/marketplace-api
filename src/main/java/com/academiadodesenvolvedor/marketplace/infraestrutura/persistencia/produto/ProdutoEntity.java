@@ -1,7 +1,7 @@
-package com.academiadodesenvolvedor.marketplace.modelo.produto;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.produto;
 
-import com.academiadodesenvolvedor.marketplace.modelo.categoria.CategoriaEntity;
-import com.academiadodesenvolvedor.marketplace.modelo.usuario.VendedorEntity;
+import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.categoria.CategoriaEntity;
+import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.VendedorEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package com.academiadodesenvolvedor.marketplace.modelo.shared;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.shared;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

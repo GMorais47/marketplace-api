@@ -1,6 +1,5 @@
-package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.jpa;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.categoria;
 
-import com.academiadodesenvolvedor.marketplace.modelo.categoria.CategoriaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

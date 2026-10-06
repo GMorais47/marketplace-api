@@ -1,4 +1,4 @@
-package com.academiadodesenvolvedor.marketplace.modelo.categoria;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.categoria;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
