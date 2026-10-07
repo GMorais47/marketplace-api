@@ -2,27 +2,29 @@ package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.shar
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
 
 @Embeddable
+@AllArgsConstructor
 public class EnderecoEntity {
     @Column(nullable = false)
-    String cep;
+    public String cep;
 
     @Column(nullable = false)
-    String rua;
+    public String rua;
 
     @Column(nullable = false)
-    String numero;
+    public String numero;
 
     @Column(nullable = false)
-    String bairro;
+    public String bairro;
 
     @Column
-    String complemento;
+    public String complemento;
 
     @Column(nullable = false)
-    String cidade;
+    public String cidade;
 
     @Column(nullable = false)
-    String estado;
+    public String estado;
 }

@@ -1,4 +1,4 @@
-package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario;
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.repositorio;
 
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.UsuarioEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

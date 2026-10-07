@@ -1,10 +1,13 @@
 package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.pedido.entidade;
 
+import com.academiadodesenvolvedor.marketplace.dominio.pedido.enums.PedidoStatus;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.shared.EnderecoEntity;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.ClienteEntity;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.VendedorEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -14,25 +17,30 @@ import java.util.UUID;
 @Entity
 @Table(name = "tb_pedidos")
 @NoArgsConstructor
+@AllArgsConstructor
 public class PedidoEntity {
 
     @Id
-    UUID id;
+    public UUID id;
 
     @ManyToOne
     @JoinColumn(name = "vendedor_id", nullable = false)
-    VendedorEntity vendedor;
+    public VendedorEntity vendedor;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
-    ClienteEntity cliente;
+    public ClienteEntity cliente;
 
     @Embedded
-    EnderecoEntity endereco;
+    public EnderecoEntity endereco;
 
     @Column(nullable = false)
-    BigDecimal valorTotal;
+    public BigDecimal valorTotal;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    public PedidoStatus status;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<ProdutoPedidoEntity> produtos = new ArrayList<>();
+    public List<ProdutoPedidoEntity> produtos = new ArrayList<>();
 }

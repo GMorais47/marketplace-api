@@ -2,12 +2,14 @@ package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.pedi
 
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.produto.ProdutoEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
 @Table(name = "tb_pedido_produtos")
+@AllArgsConstructor
 public class ProdutoPedidoEntity {
 
     @Id

@@ -3,23 +3,26 @@ package com.academiadodesenvolvedor.marketplace.dominio.pedido;
 import com.academiadodesenvolvedor.marketplace.dominio.pedido.enums.PedidoStatus;
 import com.academiadodesenvolvedor.marketplace.dominio.shared.Endereco;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Getter
+@NoArgsConstructor
 public class Pedido {
 
     @NonNull
-    private final UUID id;
+    private UUID id;
 
     @NonNull
-    private final UUID vendedorID;
+    private UUID vendedorID;
 
     @NonNull
-    private final UUID clienteID;
+    private UUID clienteID;
 
     @NonNull
     private Endereco endereco;
@@ -45,6 +48,41 @@ public class Pedido {
         this.setEndereco(endereco);
         this.setProdutos(produtos);
         this.status = PedidoStatus.PENDENTE;
+    }
+
+    private Pedido(
+            @NonNull UUID id,
+            @NonNull UUID vendedorID,
+            @NonNull UUID clienteID,
+            @NonNull Endereco endereco,
+            @NonNull BigDecimal valorTotal,
+            @NonNull PedidoStatus status
+    ) {
+        this.id = id;
+        this.vendedorID = vendedorID;
+        this.clienteID = clienteID;
+        this.endereco = endereco;
+        this.valorTotal = valorTotal;
+        this.status = status;
+        this.produtos = new ArrayList<>();
+    }
+
+    public Pedido restaurar(
+            @NonNull UUID id,
+            @NonNull UUID vendedorID,
+            @NonNull UUID clienteID,
+            @NonNull Endereco endereco,
+            @NonNull BigDecimal valorTotal,
+            @NonNull PedidoStatus status
+    ){
+        return new Pedido(
+                id,
+                vendedorID,
+                clienteID,
+                endereco,
+                valorTotal,
+                status
+        );
     }
 
     private void validarStatus(){

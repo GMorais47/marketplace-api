@@ -3,6 +3,7 @@ package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usua
 import com.academiadodesenvolvedor.marketplace.dominio.usuario.Usuario;
 import com.academiadodesenvolvedor.marketplace.dominio.usuario.repositorios.UsuarioRepository;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.UsuarioEntity;
+import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.repositorio.UsuarioEntityRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

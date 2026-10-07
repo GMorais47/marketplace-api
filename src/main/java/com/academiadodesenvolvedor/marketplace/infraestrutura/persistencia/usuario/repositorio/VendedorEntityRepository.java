@@ -1,0 +1,9 @@
+package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.repositorio;
+
+import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.VendedorEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface VendedorEntityRepository extends JpaRepository<VendedorEntity, UUID> {
+}
