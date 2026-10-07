@@ -43,7 +43,7 @@ public class Usuario {
         this.setSenha(senha);
     }
 
-    private Usuario(
+    protected Usuario(
             @NonNull UUID id,
             @NonNull Perfil perfil,
             @NonNull String nome,
