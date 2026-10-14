@@ -70,11 +70,15 @@ public class Usuario {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        if(nome == null || nome.trim().length() < 3 || nome.trim().length() > 150) {
+            throw new IllegalArgumentException("Nome inválido!");
+        }
+
+        this.nome = nome.trim();
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email.trim().toLowerCase();
     }
 
     public void setSenha(String senha) {
