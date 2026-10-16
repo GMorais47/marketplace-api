@@ -3,9 +3,11 @@ package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.shar
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Embeddable
 @AllArgsConstructor
+@NoArgsConstructor
 public class EnderecoEntity {
     @Column(nullable = false)
     public String cep;

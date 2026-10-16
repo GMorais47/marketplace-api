@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface PedidoEntityRepository extends JpaRepository<PedidoEntity, UUID> {
-    List<PedidoEntity> findByVendedorID(UUID vendedorID);
-    List<PedidoEntity> findByClienteID(UUID clienteID);
+    List<PedidoEntity> findByVendedorId(UUID vendedorId);
+    List<PedidoEntity> findByClienteId(UUID clienteId);
 }

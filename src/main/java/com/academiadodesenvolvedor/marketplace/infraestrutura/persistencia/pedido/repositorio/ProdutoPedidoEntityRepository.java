@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ProdutoPedidoEntityRepository extends JpaRepository<ProdutoPedidoEntity, UUID> {
-    List<ProdutoPedidoEntity> findByPedidoID(UUID id);
+    List<ProdutoPedidoEntity> findByPedidoId(UUID id);
 }

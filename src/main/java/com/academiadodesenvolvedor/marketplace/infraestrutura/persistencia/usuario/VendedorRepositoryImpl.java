@@ -33,7 +33,7 @@ public class VendedorRepositoryImpl implements VendedorRepository {
 
     @Override
     public boolean existsByEmail(String email){
-        return this.existsByEmail(email);
+        return this.jpaRepository.existsByEmail(email);
     }
 
     @Override

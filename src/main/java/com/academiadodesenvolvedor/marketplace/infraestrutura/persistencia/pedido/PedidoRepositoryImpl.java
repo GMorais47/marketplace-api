@@ -61,7 +61,7 @@ public class PedidoRepositoryImpl implements PedidoRepository {
 
     @Override
     public List<Pedido> findByVendedorID(UUID vendedorID) {
-        List<PedidoEntity> entities = this.jpaRepository.findByVendedorID(vendedorID);
+        List<PedidoEntity> entities = this.jpaRepository.findByVendedorId(vendedorID);
         return entities
                 .stream()
                 .map(entity -> this.forDomain(entity))
@@ -70,7 +70,7 @@ public class PedidoRepositoryImpl implements PedidoRepository {
 
     @Override
     public List<Pedido> findByClienteID(UUID clienteID) {
-        List<PedidoEntity> entities = this.jpaRepository.findByClienteID(clienteID);
+        List<PedidoEntity> entities = this.jpaRepository.findByClienteId(clienteID);
         return entities
                 .stream()
                 .map(entity -> this.forDomain(entity))

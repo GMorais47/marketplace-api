@@ -17,7 +17,12 @@ public class CriarVendedorUseCase {
     private final PasswordEncoder passwordEncoder;
 
     public CriarVendedorResponse execute(CriarVendedorRequest request){
-        Vendedor vendedor = new Vendedor(request.nome(), request.email(), request.senha());
+        Vendedor vendedor = new Vendedor(
+                request.nome(),
+                request.email(),
+                request.senha(),
+                request.endereco()
+        );
         if (repository.existsByEmail(vendedor.getEmail())){
             throw new ConflictException("E-mail já registrado!");
         }

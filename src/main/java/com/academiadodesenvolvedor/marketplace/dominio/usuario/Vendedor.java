@@ -18,9 +18,11 @@ public class Vendedor extends Usuario {
     public Vendedor(
             @NonNull String nome,
             @NonNull String email,
-            @NonNull String senha
+            @NonNull String senha,
+            @NonNull Endereco endereco
     ) {
         super(Perfil.VENDEDOR, nome, email, senha);
+        this.endereco = endereco;
     }
 
     private Vendedor(

@@ -14,7 +14,7 @@ public class ProdutoRepositoryImpl implements ProdutoRepository {
 
     @Override
     public List<Produto> findByVendedorId(UUID id) {
-        List<ProdutoEntity> entities = this.jpaRepository.findByVendedorID(id);
+        List<ProdutoEntity> entities = this.jpaRepository.findByVendedorId(id);
         return entities.stream().map(
                 entity -> new Produto()
                         .restaurar(
@@ -32,7 +32,7 @@ public class ProdutoRepositoryImpl implements ProdutoRepository {
 
     @Override
     public List<Produto> findByCategoriaId(UUID id) {
-        List<ProdutoEntity> entities = this.jpaRepository.findByCategoriaID(id);
+        List<ProdutoEntity> entities = this.jpaRepository.findByCategoriaId(id);
         return entities.stream().map(
                 entity -> new Produto()
                         .restaurar(

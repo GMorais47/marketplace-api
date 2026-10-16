@@ -6,6 +6,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ProdutoEntityRepository extends JpaRepository<ProdutoEntity, UUID> {
-    List<ProdutoEntity> findByVendedorID(UUID vendedorID);
-    List<ProdutoEntity> findByCategoriaID(UUID categoriaID);
+    List<ProdutoEntity> findByVendedorId(UUID vendedorId);
+    List<ProdutoEntity> findByCategoriaId(UUID categoriaId);
 }
