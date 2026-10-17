@@ -1,6 +1,7 @@
 package com.academiadodesenvolvedor.marketplace.infraestrutura.web.exception;
 
 import com.academiadodesenvolvedor.marketplace.aplicacao.exception.ConflictException;
+import com.academiadodesenvolvedor.marketplace.aplicacao.exception.UnauthorizedExeception;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.web.shared.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +30,17 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ConflictException.class)
-    public ResponseEntity<ApiResponse<Map<String, String>>> handlerException(ConflictException ex) {
+    public ResponseEntity<ApiResponse<Map<String, String>>> handlerConflictException(ConflictException ex) {
                 ApiResponse<Map<String, String>> response = ApiResponse.error(ex.getMessage(), null);
 
         return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
+    }
+
+    @ExceptionHandler(UnauthorizedExeception.class)
+    public ResponseEntity<ApiResponse<Map<String, String>>> handlerUnauthorizedException(UnauthorizedExeception ex) {
+        ApiResponse<Map<String, String>> response = ApiResponse.error(ex.getMessage(), null);
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
     }
 
     @ExceptionHandler(Exception.class)
