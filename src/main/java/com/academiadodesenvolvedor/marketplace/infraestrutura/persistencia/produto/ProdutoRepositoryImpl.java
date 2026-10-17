@@ -3,10 +3,12 @@ package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.prod
 import com.academiadodesenvolvedor.marketplace.dominio.produto.Produto;
 import com.academiadodesenvolvedor.marketplace.dominio.produto.repositorios.ProdutoRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
 
+@Repository
 @AllArgsConstructor
 public class ProdutoRepositoryImpl implements ProdutoRepository {
 

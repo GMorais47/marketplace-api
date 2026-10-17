@@ -23,6 +23,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/usuarios/vendedores").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/usuarios/clientes").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth").permitAll()
+
+                        .requestMatchers(HttpMethod.GET, "/api/produtos/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/categorias/**").permitAll()
+
                         .anyRequest().authenticated()
                 );
 
