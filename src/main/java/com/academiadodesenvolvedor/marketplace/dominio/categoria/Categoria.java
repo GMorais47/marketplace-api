@@ -50,6 +50,14 @@ public class Categoria {
     }
 
     public void setPath(@NonNull String path) {
-        this.path = path;
+        String regex = "[a-z0-9 ]+";
+
+        String trim = path.trim().toLowerCase();
+
+        if(!trim.matches(regex) || trim.length() < 3){
+            throw new IllegalArgumentException("Path inválido!");
+        }
+
+        this.path = trim.replace(" ", "-");
     }
 }

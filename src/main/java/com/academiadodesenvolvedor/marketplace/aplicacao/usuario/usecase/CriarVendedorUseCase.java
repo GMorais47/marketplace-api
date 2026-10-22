@@ -1,8 +1,8 @@
 package com.academiadodesenvolvedor.marketplace.aplicacao.usuario.usecase;
 
 import com.academiadodesenvolvedor.marketplace.aplicacao.exception.ConflictException;
+import com.academiadodesenvolvedor.marketplace.aplicacao.usuario.usecase.dto.CriarUsuarioResponse;
 import com.academiadodesenvolvedor.marketplace.aplicacao.usuario.usecase.dto.CriarVendedorRequest;
-import com.academiadodesenvolvedor.marketplace.aplicacao.usuario.usecase.dto.CriarVendedorResponse;
 import com.academiadodesenvolvedor.marketplace.dominio.usuario.Vendedor;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.VendedorRepositoryImpl;
 import lombok.AllArgsConstructor;
@@ -16,7 +16,7 @@ public class CriarVendedorUseCase {
     private final VendedorRepositoryImpl repository;
     private final PasswordEncoder passwordEncoder;
 
-    public CriarVendedorResponse execute(CriarVendedorRequest request){
+    public CriarUsuarioResponse execute(CriarVendedorRequest request){
         Vendedor vendedor = new Vendedor(
                 request.nome(),
                 request.email(),
@@ -33,6 +33,6 @@ public class CriarVendedorUseCase {
 
         this.repository.save(vendedor);
 
-        return new CriarVendedorResponse(vendedor.getId(), vendedor.getNome());
+        return new CriarUsuarioResponse(vendedor.getId(), vendedor.getNome());
     }
 }

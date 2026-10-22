@@ -57,14 +57,29 @@ public class ProdutoRepositoryImpl implements ProdutoRepository {
                         entity -> new Produto()
                                 .restaurar(
                                         entity.id,
-                                        entity.vendedor.id,
+                                        entity.vendedorId,
                                         entity.nome,
-                                        entity.categoria.id,
+                                        entity.categoriaId,
                                         entity.descricao,
                                         entity.foto,
                                         entity.preco,
                                         entity.avaliacao
                                 )
                 ).toList();
+    }
+
+    @Override
+    public void save(Produto produto){
+        ProdutoEntity entity = new ProdutoEntity(
+                produto.getId(),
+                produto.getVendedorID(),
+                produto.getNome(),
+                produto.getCategoriaID(),
+                produto.getDescricao(),
+                produto.getFoto(),
+                produto.getPreco(),
+                produto.getAvaliacao()
+        );
+        this.jpaRepository.save(entity);
     }
 }

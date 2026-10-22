@@ -1,5 +1,6 @@
 package com.academiadodesenvolvedor.marketplace.infraestrutura.seguranca;
 
+import com.academiadodesenvolvedor.marketplace.dominio.usuario.enums.Perfil;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,9 @@ public class SecurityConfig {
 
                         .requestMatchers(HttpMethod.GET, "/api/produtos/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/categorias/**").permitAll()
+
+                        .requestMatchers(HttpMethod.POST,"/api/categorias").hasRole(Perfil.ADMIN.name())
+                        .requestMatchers(HttpMethod.POST,"/api/produtos").hasRole(Perfil.VENDEDOR.name())
 
                         .anyRequest().authenticated()
                 )
