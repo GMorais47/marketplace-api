@@ -1,4 +1,4 @@
-package com.academiadodesenvolvedor.marketplace.dominio.pedido.enums;
+package com.academiadodesenvolvedor.marketplace.dominio.compra.enums;
 
 public enum PedidoStatus {
     PENDENTE,

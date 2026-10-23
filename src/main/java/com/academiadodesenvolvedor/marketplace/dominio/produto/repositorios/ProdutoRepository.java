@@ -9,5 +9,6 @@ public interface ProdutoRepository {
     List<Produto> findByVendedorId(UUID id);
     List<Produto> findByCategoriaId(UUID id);
     List<Produto> find();
+    List<Produto> findAllById(Iterable<UUID> ids);
     void save(Produto produto);
 }

@@ -1,5 +1,6 @@
 package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.produto;
 
+import com.academiadodesenvolvedor.marketplace.dominio.produto.Produto;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.categoria.CategoriaEntity;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.VendedorEntity;
 import jakarta.persistence.*;
@@ -57,5 +58,18 @@ public class ProdutoEntity {
         this.foto = foto;
         this.preco = preco;
         this.avaliacao = avaliacao;
+    }
+
+    public static ProdutoEntity fromDomain(Produto produto) {
+        return new ProdutoEntity(
+                produto.getId(),
+                produto.getVendedorID(),
+                produto.getNome(),
+                produto.getCategoriaID(),
+                produto.getDescricao(),
+                produto.getFoto(),
+                produto.getPreco(),
+                produto.getAvaliacao()
+        );
     }
 }

@@ -35,6 +35,7 @@ public class SecurityConfig {
 
                         .requestMatchers(HttpMethod.POST,"/api/categorias").hasRole(Perfil.ADMIN.name())
                         .requestMatchers(HttpMethod.POST,"/api/produtos").hasRole(Perfil.VENDEDOR.name())
+                        .requestMatchers(HttpMethod.POST, "/api/pedidos").hasRole(Perfil.CLIENTE.name())
 
                         .anyRequest().authenticated()
                 )

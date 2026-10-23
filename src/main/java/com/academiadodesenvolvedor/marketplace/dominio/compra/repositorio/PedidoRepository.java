@@ -1,6 +1,6 @@
-package com.academiadodesenvolvedor.marketplace.dominio.pedido.repositorio;
+package com.academiadodesenvolvedor.marketplace.dominio.compra.repositorio;
 
-import com.academiadodesenvolvedor.marketplace.dominio.pedido.Pedido;
+import com.academiadodesenvolvedor.marketplace.dominio.compra.Pedido;
 
 import java.util.List;
 import java.util.UUID;

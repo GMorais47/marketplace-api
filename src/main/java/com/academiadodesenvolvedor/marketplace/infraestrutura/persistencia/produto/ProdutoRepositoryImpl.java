@@ -69,7 +69,25 @@ public class ProdutoRepositoryImpl implements ProdutoRepository {
     }
 
     @Override
-    public void save(Produto produto){
+    public List<Produto> findAllById(Iterable<UUID> ids) {
+        return this.jpaRepository.findAllById(ids)
+                .stream().map(
+                        entity -> new Produto()
+                                .restaurar(
+                                        entity.id,
+                                        entity.vendedorId,
+                                        entity.nome,
+                                        entity.categoriaId,
+                                        entity.descricao,
+                                        entity.foto,
+                                        entity.preco,
+                                        entity.avaliacao
+                                )
+                ).toList();
+    }
+
+    @Override
+    public void save(Produto produto) {
         ProdutoEntity entity = new ProdutoEntity(
                 produto.getId(),
                 produto.getVendedorID(),

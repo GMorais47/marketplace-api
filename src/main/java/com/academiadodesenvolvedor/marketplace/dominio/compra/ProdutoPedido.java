@@ -1,4 +1,4 @@
-package com.academiadodesenvolvedor.marketplace.dominio.pedido;
+package com.academiadodesenvolvedor.marketplace.dominio.compra;
 
 import lombok.Getter;
 import lombok.NonNull;
@@ -25,7 +25,7 @@ public class ProdutoPedido {
     private BigDecimal precoUnitario;
 
     @NonNull
-    private BigDecimal valorTotal;
+    private BigDecimal total;
 
     public ProdutoPedido(
             @NonNull UUID pedidoID,
@@ -40,17 +40,17 @@ public class ProdutoPedido {
         this.setPrecoUnitario(precoUnitario);
     }
 
-    private void calcularValorTotal(){
-        this.valorTotal = this.precoUnitario.multiply(BigDecimal.valueOf(this.quantidade.longValue()));
+    private void calcularTotal(){
+        this.total = this.precoUnitario.multiply(BigDecimal.valueOf(this.quantidade.longValue()));
     }
 
     public void setQuantidade(@NonNull Integer quantidade) {
         this.quantidade = quantidade;
-        this.calcularValorTotal();
+        this.calcularTotal();
     }
 
     public void setPrecoUnitario(@NonNull BigDecimal precoUnitario) {
         this.precoUnitario = precoUnitario;
-        this.calcularValorTotal();
+        this.calcularTotal();
     }
 }
