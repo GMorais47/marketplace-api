@@ -6,6 +6,9 @@ import java.util.List;
 
 public record CadastrarCompraRequest(
         Endereco endereco,
+        String token,
+        Integer parcelas,
+        String bandeira,
         List<CompraProdutoRequest> produtos
 ) {
 }

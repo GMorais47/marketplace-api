@@ -22,37 +22,31 @@ public class ProdutoPedidoEntity {
     @Id
     private UUID id;
 
-    @Column(name = "pedido_id", nullable = false)
-    private  UUID pedidoId;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pedido_id", nullable = false)
-    private static PedidoEntity pedido;
-
-    @Column(name = "produto_id", nullable = false)
-    private  UUID produtoId;
+    private PedidoEntity pedido;
 
     @ManyToOne
     @JoinColumn(name = "produto_id", nullable = false)
-    private static ProdutoEntity produto;
+    private ProdutoEntity produto;
 
     @Column(nullable = false)
     private Integer quantidade;
 
     @Column(nullable = false)
-    private BigDecimal precoUnitario;
+    private BigDecimal valor;
 
     @Column(nullable = false)
     private BigDecimal total;
 
-    public static ProdutoPedidoEntity fromDomain(ProdutoPedido pedido) {
+    public static ProdutoPedidoEntity fromDomain(ProdutoPedido prd, PedidoEntity pedido, ProdutoEntity produto) {
         return new ProdutoPedidoEntity(
-                pedido.getId(),
-                pedido.getPedidoID(),
-                pedido.getProdutoID(),
-                pedido.getQuantidade(),
-                pedido.getPrecoUnitario(),
-                pedido.getTotal()
+                prd.getId(),
+                pedido,
+                produto,
+                prd.getQuantidade(),
+                prd.getValor(),
+                prd.getTotal()
         );
     }
 }

@@ -1,5 +1,6 @@
 package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario;
 
+import com.academiadodesenvolvedor.marketplace.aplicacao.exception.NotFoundException;
 import com.academiadodesenvolvedor.marketplace.dominio.shared.Endereco;
 import com.academiadodesenvolvedor.marketplace.dominio.usuario.Cliente;
 import com.academiadodesenvolvedor.marketplace.dominio.usuario.repositorios.ClienteRepository;
@@ -57,6 +58,64 @@ public class ClienteRepositoryImpl implements ClienteRepository {
                 );
 
         return Optional.of(cliente);
+    }
+
+    @Override
+    public Optional<Cliente> findById(UUID id) {
+        Optional<ClienteEntity> optEntity = this.repository.findById(id);
+        if (optEntity.isEmpty()) return Optional.empty();
+
+        ClienteEntity entity = optEntity.get();
+
+        List<Endereco> enderecos = new ArrayList<>();
+
+        for (ClienteEnderecoEntity enderecoEntity : entity.enderecos) {
+            Endereco endereco = new Endereco(
+                    enderecoEntity.getEndereco().cep,
+                    enderecoEntity.getEndereco().rua,
+                    enderecoEntity.getEndereco().numero,
+                    enderecoEntity.getEndereco().bairro,
+                    enderecoEntity.getEndereco().complemento,
+                    enderecoEntity.getEndereco().cidade,
+                    enderecoEntity.getEndereco().estado
+            );
+            enderecos.add(endereco);
+        }
+
+        Cliente cliente = new Cliente()
+                .restaurar(
+                        entity.id,
+                        entity.perfil,
+                        entity.nome,
+                        entity.email,
+                        entity.senha,
+                        entity.documento,
+                        entity.dataNascimento,
+                        entity.telefone,
+                        enderecos
+                );
+
+        return Optional.of(cliente);
+    }
+
+    @Override
+    public List<Endereco> findEnderecoById(UUID id) {
+        ClienteEntity entity = this.repository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Cliente não encontrado"));
+        return entity.enderecos.stream()
+                .map(cliEndereco -> {
+                    EnderecoEntity endereco = cliEndereco.getEndereco();
+                    return new Endereco(
+                            endereco.cep,
+                            endereco.rua,
+                            endereco.numero,
+                            endereco.bairro,
+                            endereco.complemento,
+                            endereco.cidade,
+                            endereco.estado
+                    );
+                })
+                .toList();
     }
 
     @Override

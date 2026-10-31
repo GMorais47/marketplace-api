@@ -24,12 +24,9 @@ public class CompraEntity {
     @Id
     private UUID id;
 
-    @Column(name = "cliente_id",nullable = false)
-    private UUID clienteId;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id", nullable = false)
-    public static ClienteEntity cliente;
+    public ClienteEntity cliente;
 
     @Embedded
     private EnderecoEntity endereco;
@@ -40,17 +37,18 @@ public class CompraEntity {
     @Column(nullable = false)
     private BigDecimal total;
 
-    public static CompraEntity fromDomain(Compra compra) {
+    public static CompraEntity fromDomain(
+            Compra compra,
+            ClienteEntity clienteEntity,
+            List<PedidoEntity> pedidos
+    ) {
         EnderecoEntity enderecoEntity = EnderecoEntity.fromDomain(compra.getEndereco());
-        List<PedidoEntity> pedidosEntities = compra.getPedidos()
-                .stream()
-                .map(PedidoEntity::fromDomain).toList();
 
         return new CompraEntity(
                 compra.getId(),
-                compra.getClienteId(),
+                clienteEntity,
                 enderecoEntity,
-                pedidosEntities,
+                pedidos,
                 compra.getTotal()
         );
     }

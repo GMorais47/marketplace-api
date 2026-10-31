@@ -22,7 +22,7 @@ public class ProdutoPedido {
     private Integer quantidade;
 
     @NonNull
-    private BigDecimal precoUnitario;
+    private BigDecimal valor;
 
     @NonNull
     private BigDecimal total;
@@ -31,17 +31,18 @@ public class ProdutoPedido {
             @NonNull UUID pedidoID,
             @NonNull UUID produtoID,
             @NonNull Integer quantidade,
-            @NonNull BigDecimal precoUnitario
+            @NonNull BigDecimal valor
     ) {
         this.id = UUID.randomUUID();
         this.pedidoID = pedidoID;
         this.produtoID = produtoID;
-        this.setQuantidade(quantidade);
-        this.setPrecoUnitario(precoUnitario);
+        this.quantidade = quantidade;
+        this.valor = valor;
+        this.calcularTotal();
     }
 
     private void calcularTotal(){
-        this.total = this.precoUnitario.multiply(BigDecimal.valueOf(this.quantidade.longValue()));
+        this.total = this.valor.multiply(BigDecimal.valueOf(this.quantidade.longValue()));
     }
 
     public void setQuantidade(@NonNull Integer quantidade) {
@@ -49,8 +50,8 @@ public class ProdutoPedido {
         this.calcularTotal();
     }
 
-    public void setPrecoUnitario(@NonNull BigDecimal precoUnitario) {
-        this.precoUnitario = precoUnitario;
+    public void setValor(@NonNull BigDecimal valor) {
+        this.valor = valor;
         this.calcularTotal();
     }
 }

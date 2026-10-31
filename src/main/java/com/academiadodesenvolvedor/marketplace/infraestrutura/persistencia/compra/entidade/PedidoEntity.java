@@ -1,6 +1,7 @@
 package com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.compra.entidade;
 
 import com.academiadodesenvolvedor.marketplace.dominio.compra.Pedido;
+import com.academiadodesenvolvedor.marketplace.dominio.compra.ProdutoPedido;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.VendedorEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,36 +25,33 @@ public class PedidoEntity {
     @Id
     private UUID id;
 
-    @Column(name = "vendedor_id",nullable = false)
-    private UUID vendedorId;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vendedor_id", nullable = false)
-    private static VendedorEntity vendedor;
-
-    @Column(name = "cliente_id",nullable = false)
-    private UUID clienteId;
+    private VendedorEntity vendedor;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "compra_id", nullable = false)
-    private static CompraEntity compra;
+    private CompraEntity compra;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProdutoPedidoEntity> produtos = new ArrayList<>();
+    private List<ProdutoPedidoEntity> produtos;
 
     @Column(nullable = false)
     private BigDecimal total;
 
-    public static PedidoEntity fromDomain(Pedido pedido){
-        List<ProdutoPedidoEntity> produtoPedidos = pedido.getProdutos()
-                .stream()
-                .map(ProdutoPedidoEntity::fromDomain).toList();
+    public static PedidoEntity fromDomain(
+            Pedido prd,
+            CompraEntity compra,
+            VendedorEntity vendedor,
+            List<ProdutoPedidoEntity> produtos
+    ){
+
         return new PedidoEntity(
-                pedido.getId(),
-                pedido.getVendedorID(),
-                pedido.getCompraId(),
-                produtoPedidos,
-                pedido.getTotal()
+                prd.getId(),
+                vendedor,
+                compra,
+                produtos,
+                prd.getTotal()
         );
     }
 }

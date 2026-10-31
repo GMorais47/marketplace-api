@@ -1,5 +1,6 @@
 package com.academiadodesenvolvedor.marketplace.infraestrutura.web.shared;
 
+import com.academiadodesenvolvedor.marketplace.dominio.shared.Endereco;
 import jakarta.validation.constraints.NotBlank;
 import lombok.NonNull;
 import org.hibernate.validator.constraints.Length;
@@ -28,4 +29,16 @@ public record EnderecoDTO(
         @Length(min = 2, max = 2, message = "O estado deve ter 2 caracteres!")
         String estado
 ) {
+
+       public Endereco toDomain(){
+               return new Endereco(
+                       this.cep(),
+                       this.rua(),
+                       this.numero(),
+                       this.bairro(),
+                       this.complemento(),
+                       this.cidade(),
+                       this.estado()
+               );
+       }
 }
