@@ -8,23 +8,15 @@ import javax.annotation.RegEx;
 import java.util.List;
 
 public record CadastrarCompraDTO(
-        @NotNull(message = "O endereço é de preenchimento obrigatório!")
+        @NotNull(message = "O pagamento é de preenchimento obrigatório" )
+        @Valid
+        PagamentoDTO pagamento,
+
+        @NotNull(message = "O endereço é de preenchimento obrigatório!" )
         @Valid
         EnderecoDTO endereco,
 
-        @NotBlank(message = "O token é de preenchimento obrigatório!")
-        String token,
-
-        @NotNull(message = "A parcela é de preenchimento obrigatório!")
-        @Min(value = 1, message = "O valor mínimo da parcela é 1!" )
-        @Max(value = 12, message = "O valor máximo da parcela é 12!" )
-        Integer parcela,
-
-        @NotBlank(message = "A bandeira é de preenchimento obrigatório!")
-        @Pattern(regexp = "^(?i)(visa|mastercard)$", message = "Apenas cartões Visa e Mastercard são aceitos!")
-        String bandeira,
-
-        @NotEmpty(message = "Deve informar pelo menos um produto!")
+        @NotEmpty(message = "Deve informar pelo menos um produto!" )
         @Valid
         List<CompraProdutoDTO> produtos
 ) {

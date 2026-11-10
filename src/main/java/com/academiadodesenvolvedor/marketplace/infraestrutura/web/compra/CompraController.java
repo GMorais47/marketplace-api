@@ -1,11 +1,11 @@
 package com.academiadodesenvolvedor.marketplace.infraestrutura.web.compra;
 
 import com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.CadastrarCompraUseCase;
-import com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto.CadastrarCompraRequest;
-import com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto.CadastrarCompraResponse;
-import com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto.CompraProdutoRequest;
-import com.academiadodesenvolvedor.marketplace.dominio.compra.Compra;
-import com.academiadodesenvolvedor.marketplace.dominio.shared.Endereco;
+import com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto.request.CadastrarCompraRequest;
+import com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto.request.CartaoRequest;
+import com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto.request.PagamentoRequest;
+import com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto.response.CadastrarCompraResponse;
+import com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto.request.CompraProdutoRequest;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.seguranca.dto.Auth;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.web.compra.dto.CadastrarCompraDTO;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.web.shared.ApiResponse;
@@ -41,10 +41,13 @@ public class CompraController {
                 )).toList();
 
         CadastrarCompraRequest request = new CadastrarCompraRequest(
+                new PagamentoRequest(
+                        dto.pagamento().token(),
+                        dto.pagamento().documento(),
+                        dto.pagamento().bandeira(),
+                        dto.pagamento().parcela()
+                ),
                 dto.endereco().toDomain(),
-                dto.token(),
-                dto.parcela(),
-                dto.bandeira(),
                 produtos
         );
 

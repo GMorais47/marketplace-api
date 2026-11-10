@@ -1,4 +1,4 @@
-package com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto;
+package com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto.response;
 
 import java.util.UUID;
 

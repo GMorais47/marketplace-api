@@ -4,10 +4,8 @@ import com.academiadodesenvolvedor.marketplace.dominio.compra.Compra;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.shared.EnderecoEntity;
 import com.academiadodesenvolvedor.marketplace.infraestrutura.persistencia.usuario.entidade.ClienteEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.jspecify.annotations.Nullable;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -37,6 +35,15 @@ public class CompraEntity {
     @Column(nullable = false)
     private BigDecimal total;
 
+    @Column()
+    private Integer parcelas;
+
+    @Column()
+    private String pagamentoId;
+
+    @Column()
+    private String status;
+
     public static CompraEntity fromDomain(
             Compra compra,
             ClienteEntity clienteEntity,
@@ -49,7 +56,10 @@ public class CompraEntity {
                 clienteEntity,
                 enderecoEntity,
                 pedidos,
-                compra.getTotal()
+                compra.getTotal(),
+                compra.getParcelas(),
+                compra.getPagamentoId(),
+                compra.getStatus()
         );
     }
 

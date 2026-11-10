@@ -1,4 +1,4 @@
-package com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto;
+package com.academiadodesenvolvedor.marketplace.aplicacao.compra.usecase.dto.request;
 
 import java.math.BigDecimal;
 import java.util.UUID;
